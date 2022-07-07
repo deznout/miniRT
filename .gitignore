@@ -1,31 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@deznout 
-kylr42
-/
-minishell
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-minishell/.gitignore
-
-Jimbo Siona init commit
-Latest commit 126fe7b on Sep 21, 2021
- History
- 0 contributors
-178 lines (137 sloc)  3.27 KB
-
 *.o
 
 ### CLion ###
@@ -204,19 +176,3 @@ tags
 # Ignore all local history of files
 .history
 .ionide
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
- Octotree
- Login with GitHub
