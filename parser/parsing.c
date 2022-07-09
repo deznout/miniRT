@@ -5,6 +5,48 @@
 #include <fcntl.h>
 #include "../minirt.h"
 
+int get_element(char *str, t_scene *scene)
+{
+    char    **arr;
+    int     i;
+
+    i = 0;
+    arr = ft_split(str, ' ');
+    while (arr[i])
+        printf("%s\n", arr[i++]);
+    if (!ft_strncmp("A", arr[0], 1))
+    {
+        scene->ambient.identifier = 1;
+        return 1;
+    }
+    else if (!ft_strncmp("C", arr[0], 1))
+    {
+        scene->camera.identifier = 1;
+        return 1;
+    }
+    else if (!ft_strncmp("L", arr[0], 1))
+    {
+        scene->light.identifier = 1;
+        return 1;
+    }
+    else if (!ft_strncmp("pl", arr[0], 2))
+    {
+        scene->plane.identifier = 1;
+        return 1;
+    }
+    else if (!ft_strncmp("sp", arr[0], 2))
+    {
+        scene->sphere.identifier = 1;
+        return 1;
+    }
+    else if (!ft_strncmp("cy", arr[0], 2))
+    {
+        scene->cylinder.identifier = 1;
+        return 1;
+    }
+    return (0);
+}
+
 int check_scene(t_scene *scene, char *content)
 {
     int     i;
@@ -13,8 +55,8 @@ int check_scene(t_scene *scene, char *content)
     i = 0;
     arr = ft_split(content, '\n');
     while (arr[i])
-        printf("count = %s\t%p\n", arr[i++], scene);
-
+        if (!get_element(arr[i++], scene))
+            return (0);
     return (1);
 }
 
