@@ -10,11 +10,10 @@
 # include <stdio.h>
 
 typedef struct s_element {
-    char		*identifier;
-    float       br_diam_ratio;
-    float       lg_hgt_ratio;
+    float       bright_diam_ratio;
+    float       light_height_ratio;
     int         r_g_b[3];
-    int         count_dup;
+    int         identifier_num;
     float       point_xyz[3];
     float       orient_vector[3];
     int         fov_in_degrees;
