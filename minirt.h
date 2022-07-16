@@ -9,6 +9,9 @@
 # include "minilibx_macOS/mlx.h"
 # include <stdio.h>
 
+# define CORRECT    1
+# define INCORRECT  0
+
 typedef struct s_element {
     float       bright_diam_ratio;
     float       light_height_ratio;
