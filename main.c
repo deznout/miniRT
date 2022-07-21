@@ -2,39 +2,45 @@
 
 int check_float(char *str)
 {
-    int i;
     int dot;
+    int flag;
 
-    i = 0;
     dot = 0;
-    if (str[i] == '-')
-        i++;
-//    if (str[i] == '0' && str[i + 1] != '0')
-//    {
-//        while (str[i] && ft_isdigit(str[i]))
-//            i++;
-//        if (str[i + 1] && str[i] == '.')
-//        {
-//            i++;
-//            dot++;
-//        }
-//        while (str[i] && ft_isdigit(str[i]))
-//            i++;
-//        if (dot > 1)
-//            return (INCORRECT);
-//        return (CORRECT);
-//    }
-//    if (str[i] != '0' && ft_isdigit(str[i]))
-//    {
-//        while (str[i] && ft_isdigit(str[i]))
-//            i++;
-//        if (str[i] == '.' && ft_isdigit(str[i + 1]))
-//            i++;
-//        while (str[i] && ft_isdigit(str[i]))
-//            i++;
-//        return (CORRECT);
-//    }
-//    return (INCORRECT);
+    flag = 1;
+    if (*str == '-')
+        str++;
+    if (*str == '0' && *(str + 1) == '.')
+    {
+        str += 2;
+        while((*str))
+        {
+            if (!ft_isdigit(*str))
+            {
+                flag = 0;
+                break;
+            }
+            str++;
+        }
+        if (flag)
+            return(CORRECT);
+    }
+    if (*str != '0' && ft_isdigit(*str))
+    {
+        while((*str))
+        {
+            if (*str == '.')
+                dot++;
+            if (!ft_isdigit(*str) || dot > 1)
+            {
+                flag = 0;
+                break;
+            }
+            str++;
+        }
+        if (flag)
+            return(CORRECT);
+    }
+    return (INCORRECT);
 }
 
 float   ft_atof(const char* s)
@@ -71,19 +77,19 @@ int	main(int ac, char** ag)
         scene.plane.identifier_num = 0;
         scene.sphere.identifier_num = 0;
 
-        printf("%f\n", ft_atof("-.34"));
-        printf("%f\n", ft_atof("-3..34"));
+        printf("%f\n", ft_atof("-0).34"));
+        printf("%f\n", ft_atof("-3..3+4"));
         printf("%f\n", ft_atof("-00.34"));
         printf("%f\n", ft_atof("-34."));
         printf("%f\n\n\n", ft_atof("345"));
         printf("-.34 = %d\n", check_float("-.34"));
         printf("-3..34 = %d\n", check_float("-3..34"));
         printf("-00.34 = %d\n", check_float("-00.34"));
-        printf("0.34 = %d\n", check_float("0.34"));
-        printf("-10.34 = %d\n", check_float("-10.34"));
+        printf("0.34009- = %d\n", check_float("0.34009-"));
+        printf("-10.34. = %d\n", check_float("-10.34."));
         printf("-0.34 = %d\n", check_float("-0.34"));
         printf("-34. = %d\n", check_float("-34."));
-        printf("34 = %d\n", check_float("34"));
+        printf("34463456 = %d\n", check_float("34463456"));
         //ft_open(&scene, ag[1]);
         //check(&scene, ag[1]);
 //        draw_map(&scene);
