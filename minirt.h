@@ -8,9 +8,16 @@
 # include "Lib/libft.h"
 # include "minilibx_macOS/mlx.h"
 # include <stdio.h>
+# include "parser/parser.h"
 
 # define CORRECT    1
 # define INCORRECT  0
+
+typedef struct s_float {
+    float   rez;
+    float   fact;
+    int     point_seen;
+}           check_fl;
 
 typedef struct s_element {
     float       bright_diam_ratio;
