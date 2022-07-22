@@ -18,7 +18,7 @@ CC		= gcc
 
 #HEADER		= cub3d.h
 
-SRCS	= main.c parser/parser.c  parser/ambient.c parser/camera.c parser/light.c parser/plane.c parser/sphere.c parser/cylinder.c
+SRCS	= main.c parser/parser.c  parser/ambient.c parser/camera.c parser/light.c parser/plane.c parser/sphere.c parser/cylinder.c display/show_display.c
 
 %.o: 	%.c #$(HEADER)
 		@$(CC) $(FLAGS) -Iminilibx_macOS -c $< -o $@ -MMD

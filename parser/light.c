@@ -27,10 +27,10 @@ int check_light(char **elem_content, t_scene *scene)
             i++;
         }
         if (check_float(elem_content[2]))
-            scene->light.light_height_ratio = ft_atof(elem_content[2]);
+            scene->light.bright_diam_ratio = ft_atof(elem_content[2]);
         else
             return (INCORRECT);
-        if (!(scene->light.light_height_ratio >= 0.0 && scene->light.light_height_ratio <= 1.0))
+        if (!(scene->light.bright_diam_ratio >= 0.0 && scene->light.bright_diam_ratio <= 1.0))
             return (INCORRECT);
         v_points = ft_split(elem_content[3], ',');
         i = 0;

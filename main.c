@@ -1,3 +1,5 @@
+
+
 #include "minirt.h"
 
 int	main(int ac, char** ag)
@@ -14,11 +16,10 @@ int	main(int ac, char** ag)
         scene.sphere.identifier_num = 0;
 
         ft_open(&scene, ag[1]);
-        //check(&scene, ag[1]);
-//        draw_map(&scene);
-//        mlx_key_hook(scene.win, actions, &scene);
-//        mlx_hook(scene.win, 17, 0, leave_game, &scene);
-//        mlx_loop(scene.mlx);
+        open_display(&scene);
+//        mlx_key_hook(scene.display.win, actions, &scene);
+//        mlx_hook(scene.display.win, 17, 0, leave_game, &scene);
+        mlx_loop(scene.display.mlx);
     }
     else
         printf("The scene wasn't given!\n");
