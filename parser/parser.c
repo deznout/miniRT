@@ -104,8 +104,12 @@ int check_scene(t_scene *scene, char *content)
     // write logs output too if you wish
 
     while (elements[i])
-        if (!define_element(elements[i++], scene)) // + check the number of A/C/L (number must be 1)
+        if (!define_element(elements[i++], scene))
             return (INCORRECT);
+    if (!(scene->ambient.identifier_num == 1 && scene->camera.identifier_num == 1
+    && scene->light.identifier_num == 1 && scene->plane.identifier_num >= 1
+    && scene->sphere.identifier_num >= 1 && scene->cylinder.identifier_num >= 1))
+        return (INCORRECT);
     return (CORRECT);
 }
 

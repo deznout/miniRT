@@ -59,7 +59,7 @@ int check_cylinder(char **elem_content, t_scene *scene)
                 return (INCORRECT);
             i++;
         }
-        scene->sphere.identifier_num += 1; // after checking that all params are correct -> then align a value
+        scene->cylinder.identifier_num += 1; // after checking that all params are correct -> then align a value
         return (CORRECT);
     }
     return (INCORRECT);
