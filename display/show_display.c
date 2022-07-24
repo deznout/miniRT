@@ -22,5 +22,5 @@ void	open_display(t_scene *scene)
         scene->y_++;
     }
     */
-    mlx_string_put(scene->display.mlx, scene->display.win, 32, 32, 255255255, "0");
+    //mlx_string_put(scene->display.mlx, scene->display.win, 32, 32, 255255255, "0");
 }

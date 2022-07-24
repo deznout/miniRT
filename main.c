@@ -19,6 +19,7 @@ int	main(int ac, char** ag)
         open_display(&scene);
 //        mlx_key_hook(scene.display.win, actions, &scene);
 //        mlx_hook(scene.display.win, 17, 0, leave_game, &scene);
+        mlx_hook(scene.display.win, 17, 0, (void *)exit, NULL);
         mlx_loop(scene.display.mlx);
     }
     else
