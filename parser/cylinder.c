@@ -1,8 +1,26 @@
-//
-// Created by Hoover Brent on 7/21/22.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbrent <hbrent@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/27 09:56:02 by hbrent            #+#    #+#             */
+/*   Updated: 2022/07/27 10:26:22 by hbrent           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "parser.h"
+
+static int  final_cylinder(t_scene *scene)
+{
+
+}
+
+static int  split_cylinder_content(int num, t_scene *scene, char **elem_content)
+{
+
+}
 
 int check_cylinder(char **elem_content, t_scene *scene)
 {
