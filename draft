@@ -1,0 +1,109 @@
+CanvasToViewport(x, y) {
+    return (x*Vw/Cw, y*Vh/Ch, d)
+}
+
+
+ReflectRay(R, N) {
+    return 2*N*dot(N, R) - R;
+}
+
+
+ComputeLighting(P, N, V, s) {
+    i = 0.0
+    for light in scene.Lights {
+        if light.type == ambient {
+            i += light.intensity
+        } else {
+            if light.type == point {
+                L = light.position - P
+                t_max = 1
+            } else {
+                L = light.direction
+                t_max = inf
+            }
+
+            # Проверка теней
+            shadow_sphere, shadow_t = ClosestIntersection(P, L, 0.001, t_max)
+            if shadow_sphere != NULL
+                continue
+
+            # Диффузность
+            n_dot_l = dot(N, L)
+            if n_dot_l > 0
+                i += light.intensity*n_dot_l/(length(N)*length(L))
+
+            # Блеск
+            if s != -1 {
+                R = ReflectRay(L, N)
+                r_dot_v = dot(R, V)
+                if r_dot_v > 0
+                    i += light.intensity*pow(r_dot_v/(length(R)*length(V)), s)
+            }
+        }
+    }
+    return i
+}
+
+
+ClosestIntersection(O, D, t_min, t_max) {
+    closest_t = inf
+    closest_sphere = NULL
+    for sphere in scene.Spheres {
+        t1, t2 = IntersectRaySphere(O, D, sphere)
+        if t1 in [t_min, t_max] and t1 < closest_t
+            closest_t = t1
+            closest_sphere = sphere
+        if t2 in [t_min, t_max] and t2 < closest_t
+            closest_t = t2
+            closest_sphere = sphere
+    }
+    return closest_sphere, closest_t
+}
+
+
+TraceRay(O, D, t_min, t_max, depth) {
+    closest_sphere, closest_t = ClosestIntersection(O, D, t_min, t_max)
+
+    if closest_sphere == NULL
+        return BACKGROUND_COLOR
+
+    # Вычисление локального цвета
+    P = O + closest_t*D  # Вычисление точки пересечения
+    N = P - closest_sphere.center  # Вычисление нормали сферы в точке пересечения
+    N = N / length(N)
+    local_color = closest_sphere.color*ComputeLighting(P, N, -D, sphere.specular)
+
+    # Если мы достигли предела рекурсии или объект не отражающий, то мы закончили
+    r = closest_sphere.reflective
+    if depth <= 0 or r <= 0:
+        return local_color
+
+    # Вычисление отражённого цвета
+    R = ReflectRay(-D, N)
+    reflected_color = TraceRay(P, R, 0.001, inf, depth - 1)
+
+    return local_color*(1 - r) + reflected_color*r
+}
+
+
+### main function
+
+for x in [-Cw/2, Cw/2] // [-WIDTH/2, WIDTH/2]
+{
+    for y in [-Ch/2, Ch/2] // [-HEIGHT/2, HEIGHT/2]
+    {
+        D = camera.rotation * CanvasToViewport(x, y)
+        color = TraceRay(camera.position, D, 1, inf)
+        canvas.PutPixel(x, y, color)
+    }
+}
+
+int x = -WIDTH/2;
+while (x <= WIDTH/2)
+{
+    int y = -HEIGHT/2;
+    while (y <= HEIGHT/2)
+    {
+        D =
+    }
+}

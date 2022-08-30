@@ -26,11 +26,11 @@ int	main(int ac, char** ag)
         scene.sphere.identifier_num = 0;
 
         ft_open(&scene, ag[1]);
-        open_display(&scene);
-//        mlx_key_hook(scene.display.win, actions, &scene);
-//        mlx_hook(scene.display.win, 17, 0, leave_game, &scene);
-        mlx_hook(scene.display.win, 17, 0, (void *)exit, NULL);
-        mlx_loop(scene.display.mlx);
+//        open_display(&scene);
+////        mlx_key_hook(scene.display.win, actions, &scene);
+////        mlx_hook(scene.display.win, 17, 0, leave_game, &scene);
+//        mlx_hook(scene.display.win, 17, 0, (void *)exit, NULL);
+//        mlx_loop(scene.display.mlx);
     }
     else
         printf("The scene wasn't given!\n");
